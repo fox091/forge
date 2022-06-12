@@ -5,11 +5,20 @@ import (
 	"time"
 )
 
-var hasSeeded = false
+var cachedRandSource rand.Source
 
-func seed() {
-	if hasSeeded {
-		return
+func getRandSource() rand.Source {
+	if cachedRandSource == nil {
+		cachedRandSource = rand.NewSource(time.Now().UnixNano())
 	}
-	rand.Seed(time.Now().UnixNano())
+	return cachedRandSource
+}
+
+var cachedRand *rand.Rand
+
+func getRand() *rand.Rand {
+	if cachedRand == nil {
+		cachedRand = rand.New(getRandSource())
+	}
+	return cachedRand
 }

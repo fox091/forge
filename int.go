@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"math"
 	"math/bits"
-	"math/rand"
 )
 
 type IntOptions struct {
@@ -20,7 +19,7 @@ type IntOptions struct {
 //
 // The calculations are platform independent and will step down to 32 bit functions on a 32 bit architecture.
 func Int(optionModifiers ...func(*IntOptions)) (int, error) {
-	seed()
+	rand := getRand()
 	options := IntOptions{
 		Min: math.MinInt,
 		Max: math.MaxInt,

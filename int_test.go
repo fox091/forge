@@ -1,7 +1,6 @@
 package forge_test
 
 import (
-	"fmt"
 	"math"
 	"testing"
 
@@ -15,6 +14,5 @@ func Test_Int(t *testing.T) {
 		assert.NoError(t, err)
 		assert.GreaterOrEqual(t, res, math.MinInt)
 		assert.Less(t, res, math.MaxInt)
-		fmt.Println(res)
 	}
 }
