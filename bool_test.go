@@ -10,7 +10,7 @@ import (
 func TestBool(t *testing.T) {
 	t.Run("returns true 50 percent of the time by default", func(t *testing.T) {
 		trueCount, falseCount := 0, 0
-		for i := 0; i < 100000; i += 1 {
+		for i := 0; i < 100000; i++ {
 			randBool := forge.Bool()
 			if randBool {
 				trueCount += 1
@@ -26,7 +26,7 @@ func TestBool(t *testing.T) {
 			bo.PercentTrue = 0.1
 		}
 		trueCount, falseCount := 0, 0
-		for i := 0; i < 100000; i += 1 {
+		for i := 0; i < 100000; i++ {
 			randBool := forge.Bool(boolOptionFunc)
 			if randBool {
 				trueCount += 1

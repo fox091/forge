@@ -26,7 +26,7 @@ func String(optionModifiers ...func(*StringOptions)) string {
 	sb := strings.Builder{}
 	sb.Grow(requestedLength)
 
-	for i := 0; i < requestedLength; i += 1 {
+	for i := 0; i < requestedLength; i++ {
 		idx := IndexGenerator.Index(charSetLength)
 		sb.WriteByte(options.CharSet[idx])
 	}
