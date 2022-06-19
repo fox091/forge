@@ -5,7 +5,7 @@ import (
 	"math/rand"
 )
 
-var IndexGenerator = NewRandomIndexGenerator()
+var IndexGenerator = newRandomIndexGenerator()
 
 type RandomIndexGenerator struct {
 	randSource    rand.Source
@@ -16,7 +16,7 @@ type RandomIndexGenerator struct {
 	itemCount     int
 }
 
-func NewRandomIndexGenerator() RandomIndexGenerator {
+func newRandomIndexGenerator() RandomIndexGenerator {
 	randSource := getRandSource()
 
 	randBits := randSource.Int63()
@@ -28,6 +28,9 @@ func NewRandomIndexGenerator() RandomIndexGenerator {
 	}
 }
 
+// Index returns a random index in the half-open interval [0, itemCount).
+//
+// Successive calls to Index with the same itemCount are more efficient than calls with different itemCounts.
 func (g *RandomIndexGenerator) Index(itemCount int) int {
 	if itemCount != g.itemCount {
 		// Log2(n) will give the number of bits needed to represent n when rounded up.
