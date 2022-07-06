@@ -1,5 +1,13 @@
 package forge
 
+var byteMask = int64(1<<8 - 1)
+
+// Byte returns a random byte.
+func Byte() byte {
+	rand := getRand()
+	return byte(rand.Int63() & byteMask)
+}
+
 type BytesOptions struct {
 	Count int
 }
